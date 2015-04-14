@@ -1,17 +1,15 @@
-var _ = require('lodash');
-
 var each = function (collection, callback) {
-
+ // Your function here
 };
 
 var eachRecursive = function (collection, callback) {
-
+ // Your function here
 };
 
 var map = function (collection, iteratee) {
-
+ // Your function here
 };
 
-exports.each = _.each;
-exports.eachRecursive = _.each;
-exports.map = _.map;
+exports.each = each;
+exports.eachRecursive = eachRecursive;
+exports.map = map;
