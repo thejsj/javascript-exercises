@@ -4,7 +4,7 @@ var each = require('./index.js').each;
 var eachRecursive = require('./index.js').eachRecursive;
 var map = require('./index.js').map;
 
-describe('each', function () {
+xdescribe('each', function () {
 
   describe('arrays', function () {
 
@@ -59,7 +59,7 @@ describe('each', function () {
 
   });
 
-  describe('objects', function () {
+xdescribe('objects', function () {
 
     it('should execute the same functions on all values of an object', function () {
       var sum = 0;
@@ -110,7 +110,7 @@ describe('eachRecursive', function () {
 
    it('should execute the same functions on all values of the array', function () {
       var sum = 0;
-      each([1, 2, 3], function (value) {
+      eachRecursive([1, 2, 3], function (value) {
         sum += value;
       });
       sum.should.equal(6);
@@ -118,7 +118,7 @@ describe('eachRecursive', function () {
 
     it('should handle single value arrays', function () {
       var sum = 0;
-      each([777], function (value) {
+      eachRecursive([777], function (value) {
         sum += value ;
       });
       sum.should.equal(777);
@@ -126,7 +126,7 @@ describe('eachRecursive', function () {
 
     it('should not do anything if the array contains no values', function () {
       var called = false;
-      each([], function () {
+      eachRecursive([], function () {
         called = true;
       });
       called.should.equal(false);
@@ -134,15 +134,25 @@ describe('eachRecursive', function () {
 
     it('should pass the indexes as second arguments to the callback function', function () {
       var indexSum = 0;
-      each([9, 8, 7], function (val, i) {
+      eachRecursive([9, 8, 7], function (val, i) {
         indexSum += i;
       });
       indexSum.should.equal(3);
     });
 
+    it('should leave the original array untouched', function () {
+      var exArray = [1, 2, 3, 4];
+      var _exArray = [1, 2, 3, 4];
+      var sum = 0;
+      eachRecursive(exArray, function (val, i) {
+        sum += val;
+      });
+      sum.should.equal(10);
+      _exArray.should.eql(exArray);
+    });
 });
 
-describe('map', function () {
+xdescribe('map', function () {
 
   it('should map the values in an array', function () {
     var arr = [1, 1, 1];
